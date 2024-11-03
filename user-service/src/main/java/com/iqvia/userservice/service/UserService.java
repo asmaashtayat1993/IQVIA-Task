@@ -22,7 +22,7 @@ public class UserService {
 	@Transactional
 	public ResponseEntity<UserEntity> createUser(UserEntity user) {
 		UserEntity savedUser = userRepository.save(user);
-		log.info("Customer created successfully:");
+		log.info("user created successfully:");
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 	}
 
