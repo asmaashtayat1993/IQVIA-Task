@@ -1,0 +1,29 @@
+package com.iqvia.usermanagement.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.iqvia.usermanagement.dto.UserDTO;
+import com.iqvia.usermanagement.feignclient.UserServiceFeignClient;
+import com.iqvia.userservice.exception.UserNotFoundException;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class UserManagementService {
+	@Autowired
+	private UserServiceFeignClient userServiceFeignClient;
+	
+	@Transactional
+	public UserDTO updateCustomer(Long id, UserDTO customer) {
+
+	    // Fetch the existing user by ID
+        UserDTO currentUser = userServiceFeignClient.getUserById(id);
+        
+        // If user not found, throw an exception
+        if (currentUser == null) {
+            throw new UserNotFoundException("User with id: " + id + " not found");
+        }	}
+
+}

@@ -1,0 +1,5 @@
+package com.iqvia.userservice.entity;
+
+public class UserEntity {
+
+}

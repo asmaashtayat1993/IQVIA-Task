@@ -1,0 +1,7 @@
+com\iqvia\usermanagement\service\UserManagementService.class
+com\iqvia\usermanagement\exception\UserNotFoundException.class
+com\iqvia\usermanagement\feignclient\UserServiceFeignClient.class
+com\iqvia\usermanagement\UserManagementMicroserviceApplication.class
+com\iqvia\usermanagement\controller\UserManagmentController.class
+com\iqvia\usermanagement\dto\UserDTO.class
+com\iqvia\usermanagement\exception\GlobalExceptionHandler.class

@@ -1,0 +1,5 @@
+com\iqvia\userservice\repository\UserRepository.class
+com\iqvia\userservice\entity\UserEntity.class
+com\iqvia\userservice\UserMicroserviceApplication.class
+com\iqvia\userservice\controller\UserController.class
+com\iqvia\userservice\service\UserService.class

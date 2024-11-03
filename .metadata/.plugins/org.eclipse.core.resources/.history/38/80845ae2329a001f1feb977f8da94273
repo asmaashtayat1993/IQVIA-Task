@@ -1,0 +1,5 @@
+package com.iqvia.usermanagement.exception;
+
+public class GlobalExceptionHandler {
+
+}

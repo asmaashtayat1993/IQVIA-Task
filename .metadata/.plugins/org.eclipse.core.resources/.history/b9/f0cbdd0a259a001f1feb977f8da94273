@@ -1,0 +1,43 @@
+package com.iqvia.userservice.service;
+
+import java.time.LocalDateTime;
+
+import org.hibernate.type.SerializationException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.digitinary.customerservice.entity.CustomerOrgs;
+import com.digitinary.customerservice.entity.Customers;
+import com.digitinary.customerservice.enums.CustomerType;
+import com.digitinary.customerservice.enums.NotificationType;
+import com.digitinary.customerservice.event.CustomerNotificationEvent;
+import com.digitinary.customerservice.event.CustomerPublisher;
+import com.digitinary.customerservice.exception.CustomerNotFoundException;
+import com.digitinary.customerservice.exception.CustomerValidationException;
+import com.digitinary.customerservice.exception.UpdateCustomerException;
+import com.digitinary.customerservice.util.JsonUtil;
+import com.iqvia.userservice.entity.UserEntity;
+import com.iqvia.userservice.repository.UserRepository;
+
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class UserService {
+
+	@Autowired
+	private UserRepository userRepository;
+
+
+	@Transactional
+	public ResponseEntity<UserEntity> createUser(UserEntity user) {		
+		UserEntity savedUser = userRepository.save(user);
+			log.info("Customer created successfully:");
+			return new ResponseEntity<>(savedUser, HttpStatus.CREATED);	}
+
+	
+
+}

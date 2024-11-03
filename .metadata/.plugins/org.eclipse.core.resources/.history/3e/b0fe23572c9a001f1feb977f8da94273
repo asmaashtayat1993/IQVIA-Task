@@ -1,0 +1,5 @@
+package com.iqvia.usermanagement.service;
+
+public class UserManagementService {
+
+}

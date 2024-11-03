@@ -1,0 +1,30 @@
+package com.iqvia.userservice.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.iqvia.userservice.entity.UserEntity;
+import com.iqvia.userservice.service.UserService;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/customers")
+@Validated
+public class UserController {
+	@Autowired
+	private UserService userService;
+
+	@PostMapping("/save")
+	public ResponseEntity<UserEntity> createCustomer(@Valid @RequestBody UserEntity customer) {
+		ResponseEntity<UserEntity> user= userService.createUser(customer);
+		return new ResponseEntity<>(user.getBody(), HttpStatus.CREATED);
+	}
+
+}

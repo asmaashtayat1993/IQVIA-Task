@@ -1,0 +1,13 @@
+package com.iqvia.usermanagement.feignclient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.iqvia.usermanagement.dto.UserDTO;
+
+@FeignClient(name = "user-service", url = "${user-service.url}")
+public interface UserServiceFeignClient {
+	@GetMapping("/get/{id}")
+	UserDTO getUserById(@PathVariable("id") Long id);
+}
