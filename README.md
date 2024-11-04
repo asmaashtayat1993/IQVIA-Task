@@ -97,8 +97,7 @@ Technology Used :
 
 Usage : 
 
-     After starting both services,create user by user-service and  you can perform operations on users via the user-management-service,
-   which will communicate with user-service to handle data. (refer to postman collection)
+     After starting both services,create user by user-service and  you can perform operations on users via the user-management-service,which will communicate with user-service to handle data. (refer to postman collection)
 
 
 
