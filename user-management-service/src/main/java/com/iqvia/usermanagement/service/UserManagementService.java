@@ -12,29 +12,20 @@ import com.iqvia.usermanagement.exception.UserNotFoundException;
 import com.iqvia.usermanagement.feignclient.UserServiceFeignClient;
 
 import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class UserManagementService {
 	@Autowired
 	private UserServiceFeignClient userServiceFeignClient;
 
 	public UserDTO getUserById(Long id) {
-		try {
 			UserDTO existingUser = userServiceFeignClient.getUserById(id);
 			if (existingUser == null) {
 				throw new UserNotFoundException("User with id: " + id + " not found");
 			}
-
 			return existingUser;
-
-		} catch (UserNotFoundException e) {
-			System.err.println(e.getMessage());
-			throw e;
-		} catch (FeignException.NotFound e) {
-			throw new UserNotFoundException("User with id: " + id + " not found");
-		} catch (FeignException e) {
-			throw new RuntimeException("Error occurred while retrieving user: " + e.getMessage());
-		}
 	}
 
 	 public PageResponse<UserDTO> getAllUsers(int page, int size, String sortBy) {
