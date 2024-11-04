@@ -55,7 +55,7 @@ Microservices Details
 
 	- Supports operations such as fetching, updating, and deleting user data.
 
-	- Uses OpenFeign for seamless integration with the User Service.
+	- Uses OpenFeign for communicate with the User Service.
 
 •	Endpoints:
 
