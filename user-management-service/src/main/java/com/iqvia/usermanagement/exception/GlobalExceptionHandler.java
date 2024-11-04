@@ -1,5 +1,8 @@
 package com.iqvia.usermanagement.exception;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,21 +23,33 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<ErrorResponse> handleAllExceptions(Exception ex) {
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
+		String formattedMessage = extractMessage(ex.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), formattedMessage);
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(RuntimeException.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<ErrorResponse> handleAllRuntimeException(RuntimeException ex) {
-        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
+		String formattedMessage = extractMessage(ex.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),formattedMessage);
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@ExceptionHandler(FeignException.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ResponseEntity<ErrorResponse> handleAllFeignException(FeignException ex) {
-		 ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+		String formattedMessage = extractMessage(ex.getMessage());
+		 ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), formattedMessage);
 	        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+	}
+	
+	private String extractMessage(String errorMessage) {
+		Pattern pattern = Pattern.compile("\"message\":\"(.*?)\"");
+		Matcher matcher = pattern.matcher(errorMessage);
+		if (matcher.find()) {
+			return matcher.group(1);
+		}
+		return errorMessage;
 	}
 }
