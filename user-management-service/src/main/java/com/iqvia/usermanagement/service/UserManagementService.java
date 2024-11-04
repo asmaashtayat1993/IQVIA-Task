@@ -1,8 +1,12 @@
 package com.iqvia.usermanagement.service;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.iqvia.usermanagement.dto.PageResponse;
 import com.iqvia.usermanagement.dto.UserDTO;
 import com.iqvia.usermanagement.exception.UserNotFoundException;
 import com.iqvia.usermanagement.feignclient.UserServiceFeignClient;
@@ -33,6 +37,10 @@ public class UserManagementService {
 		}
 	}
 
+	 public PageResponse<UserDTO> getAllUsers(int page, int size, String sortBy) {
+	        ResponseEntity<PageResponse<UserDTO>> response = userServiceFeignClient.getAllUsers(page, size, sortBy);	        
+	        return response.getBody(); 
+	    }
 	public UserDTO updateUser(Long id, UserDTO user) {
 
 		UserDTO existingUser = getUserById(id);

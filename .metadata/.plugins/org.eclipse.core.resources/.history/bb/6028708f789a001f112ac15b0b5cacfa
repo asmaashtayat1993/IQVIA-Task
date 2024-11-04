@@ -1,0 +1,31 @@
+package com.iqvia.usermanagement.dto;
+
+import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class PageResponse<T> {
+    private List<T> content; // The list of users
+    private int totalPages;   // Total number of pages
+    private long totalElements; // Total number of elements
+    private int size;         // Size of the page
+    private int number;       // Current page number
+
+
+
+   /* public PageResponse(List<T> content, int pageNumber, int pageSize, long totalElements) {
+        this.content = content;
+        this.pageNumber = pageNumber;
+        this.pageSize = pageSize;
+        this.totalElements = totalElements;
+        this.totalPages = (int) Math.ceil((double) totalElements / pageSize);
+    }*/
+    
+}

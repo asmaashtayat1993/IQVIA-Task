@@ -1,0 +1,5 @@
+
+user-service.url=http://localhost:8080/api/users
+server.port=8089
+feign.hystrix.enabled=true
+spring.cloud.openfeign.enableHystrix=true

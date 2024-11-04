@@ -1,6 +1,10 @@
 package com.iqvia.userservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -31,7 +35,11 @@ public class UserService {
 
 	}
 	
-	
+	public Page<UserEntity> getAllUsers(int page, int size, String sortBy) {
+		Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+		return userRepository.findAll(pageable);
+	}
+
 	@Transactional
     public UserEntity updateUser(Long id, UserEntity user) {
         UserEntity existingUser = getUserById(id);

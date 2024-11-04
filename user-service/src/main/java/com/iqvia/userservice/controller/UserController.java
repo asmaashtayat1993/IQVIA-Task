@@ -1,6 +1,7 @@
 package com.iqvia.userservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iqvia.userservice.entity.UserEntity;
@@ -35,6 +37,14 @@ public class UserController {
 	public ResponseEntity<UserEntity> getUserById(@PathVariable("id") Long id) {
 		UserEntity user = userService.getUserById(id);
 		return new ResponseEntity<>(user, HttpStatus.OK);
+	}
+	
+	@GetMapping("/all")
+	public ResponseEntity<Page<UserEntity>> getAllUsers(@RequestParam(value = "page", defaultValue = "0") int page,
+			@RequestParam(value = "size", defaultValue = "10") int size,
+			@RequestParam(value = "sortBy", defaultValue = "id") String sortBy) {
+		Page<UserEntity> users = userService.getAllUsers(page, size, sortBy);
+		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 
 	@PutMapping("/update/{id}")
