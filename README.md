@@ -24,6 +24,7 @@ Microservices Details
 1. User Service (user-service)
    
 •	Port: 8080
+
 •	Responsibilities:
 
 	-Create and store user details.
