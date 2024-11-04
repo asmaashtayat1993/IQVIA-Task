@@ -13,10 +13,8 @@ This service provides management functions, such as fetching, updating, and dele
 Database:
 
 •	H2 In-Memory Database:
-
-o	Accessible at:  (http://localhost:8080/h2-console)
-
-o	Credentials are specified in the application.properties file of each microservice.
+	Accessible at:  (http://localhost:8080/h2-console)
+	Credentials are specified in the application.properties file of each microservice.
 ________________________________________
 
 Microservices Details
@@ -27,13 +25,15 @@ Microservices Details
 •	Responsibilities:
 o	Create and store user details.
 o	Maintain the user data in an H2 database.
+
 •	Endpoints:
+
 o	POST /api/users/save- Create a new user.
 o	GET /api/users/get/{id} - Retrieve a specific user by ID.
 o	PUT /api/users/update/{id} - Update user details by ID.
 o	DELETE /api/users/delete/{id} - Delete a user by ID.
 o	GET /api/users/all - Get all users.
-o	
+
 
 3. User Management Service (user-management-service)
    
