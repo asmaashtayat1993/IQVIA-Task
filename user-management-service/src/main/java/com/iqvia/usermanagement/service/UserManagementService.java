@@ -1,7 +1,5 @@
 package com.iqvia.usermanagement.service;
 
-import java.util.Collections;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,11 +9,7 @@ import com.iqvia.usermanagement.dto.UserDTO;
 import com.iqvia.usermanagement.exception.UserNotFoundException;
 import com.iqvia.usermanagement.feignclient.UserServiceFeignClient;
 
-import feign.FeignException;
-import lombok.extern.slf4j.Slf4j;
-
 @Service
-@Slf4j
 public class UserManagementService {
 	@Autowired
 	private UserServiceFeignClient userServiceFeignClient;
