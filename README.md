@@ -11,8 +11,11 @@ This service is responsible for creating and managing user data, storing it in a
 This service provides management functions, such as fetching, updating, and deleting user details. It communicates with the User Service using OpenFeign to handle these operations.
 
 Database:
+
 •	H2 In-Memory Database:
+
 o	Accessible at:  (http://localhost:8080/h2-console)
+
 o	Credentials are specified in the application.properties file of each microservice.
 ________________________________________
 
