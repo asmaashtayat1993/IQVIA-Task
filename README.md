@@ -4,9 +4,7 @@ we have two microservices :
 
  1-  user-service : that  create user and store it in h2 database.
  
- 2-  user-mamgmanr-service : User Management Service management tasks like fetching and
- 
-		modifying user details call microservice 1 using open open feign client.
+ 2-  user-mamgmanr-service : User Management Service management tasks like fetching and modifying user details call microservice 1 using open open feign client.
   
 
 
