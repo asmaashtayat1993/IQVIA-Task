@@ -71,16 +71,15 @@ ________________________________________
 Running the Application
 
 1.	Clone the repository.
-2.	
-3.	Start both microservices:
-	
-o	Run the User Service (user-service) on port 8080.
 
-o	Run the User Management Service (user-management-service) on port 8081.
+2.	Start both microservices:
+        Run the User Service (user-service) on port 8080.
+	Run the User Management Service (user-management-service) on port 8081.
 
-4.	Access the H2 database console at :   (http://localhost:8080/h2-console).
+3.	Access the H2 database console at :
+4.	 (http://localhost:8080/h2-console).
 	
-o	Credentials can be found in the application.properties file.
+	Credentials can be found in the application.properties file.
 
 ________________________________________
 
@@ -91,6 +90,8 @@ Technology Used :
 •	Spring Cloud OpenFeign - For inter-service communication.
 
 •	H2 Database - In-memory database for data persistence.
+
+
 Usage
 
 After starting both services,create user by user-service and  you can perform operations on users via the user-management-service,
