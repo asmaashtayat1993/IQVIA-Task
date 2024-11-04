@@ -40,10 +40,10 @@ Microservices Details
 
         -DELETE /api/users/delete/{id} - Delete a user by ID.
 
-         -GET /api/users/all - Get all users.
+        -GET /api/users/all - Get all users.
 
 
-3. User Management Service (user-management-service)
+2. User Management Service (user-management-service)
    
 •	Port: 8081
 
@@ -57,9 +57,9 @@ Microservices Details
 
 •	Endpoints:
 
-         -  GET /api/managment/users/all - Retrieve all users (calls UserService).
+         - GET /api/managment/users/all - Retrieve all users (calls UserService).
 
-         - GET /api/managment/users/get/{id} - Retrieve a user by ID (calls UserService).
+         -GET /api/managment/users/get/{id} - Retrieve a user by ID (calls UserService).
 
          -PUT /api/managment/users/update/{id} - Update a user (calls UserService).
 
